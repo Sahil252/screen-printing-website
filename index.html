@@ -7,7 +7,6 @@
 <style>
 body{margin:0;font-family:Arial;background:#f8fafc}
 
-/* HEADER */
 header{
   background:#0f172a;
   color:white;
@@ -16,15 +15,11 @@ header{
   font-size:18px;
 }
 
-/* HERO */
 .hero{
-  padding:20px;
+  padding:15px;
   text-align:center;
 }
-.hero h1{margin:0}
-.hero p{color:#555}
 
-/* PRODUCTS */
 .container{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -39,10 +34,11 @@ header{
   box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
 
-.card img{
+.img{
   width:100%;
   height:140px;
-  object-fit:cover;
+  background-size:cover;
+  background-position:center;
   border-radius:6px;
 }
 
@@ -65,56 +61,47 @@ header{
 <header>OM Carry Bag</header>
 
 <div class="hero">
-  <h1>Carry Bag Printing</h1>
-  <p>Bulk Orders • Custom Logo Printing • Best Price</p>
+  <h2>Carry Bag Printing</h2>
+  <p>Bulk Orders • Custom Logo Printing</p>
 </div>
 
-<div class="container">
-
-  <!-- PAPER BAG -->
-  <div class="card">
-    <img src="https://cms.cloudinary.vpsvc.com/image/upload/if_ar_gt_1.1/c_scale,w_816/f_auto,q_auto:best/india%20lob/paper%20bags/in_paper-bags_001">
-    <div class="title">Paper Bags</div>
-    <div class="price">₹6 – ₹10 / bag</div>
-    <div class="btn" onclick="order('Paper Bag')">Get Quote</div>
-  </div>
-
-  <div class="card">
-    <img src="https://cms.cloudinary.vpsvc.com/image/upload/if_ar_gt_1.1/c_scale,w_816/f_auto,q_auto:best/India%20LOB/Premium%20option%20in%20paper%20bag/Premium_option_in_Paper_bags_02">
-    <div class="title">Premium Paper Bag</div>
-    <div class="price">₹8 – ₹12 / bag</div>
-    <div class="btn" onclick="order('Premium Paper Bag')">Get Quote</div>
-  </div>
-
-  <!-- D CUT -->
-  <div class="card">
-    <img src="https://cms.cloudinary.vpsvc.com/image/upload/if_ar_gt_1.1/c_scale,w_816/f_auto,q_auto:best/India%20LOB/Non%20Woven%20bags/Non_Woven_bag_Marquee_1">
-    <div class="title">D-Cut Bag</div>
-    <div class="price">₹4 – ₹6 / bag</div>
-    <div class="btn" onclick="order('D-Cut Bag')">Get Quote</div>
-  </div>
-
-  <div class="card">
-    <img src="https://cms.cloudinary.vpsvc.com/image/upload/if_ar_gt_1.1/c_scale,w_816/f_auto,q_auto:best/India%20LOB/Non%20Woven%20bags/Non_Woven_bag_Marquee_2">
-    <div class="title">D-Cut Premium</div>
-    <div class="price">₹5 – ₹7 / bag</div>
-    <div class="btn" onclick="order('D-Cut Premium')">Get Quote</div>
-  </div>
-
-  <!-- LOOP -->
-  <div class="card">
-    <img src="https://cms.cloudinary.vpsvc.com/image/upload/if_ar_gt_1.1/c_scale,w_816/f_auto,q_auto:best/India%20LOB/Metallic%20Shopping%20Bag/Metallic_Shopping_Bag_Marquee_1">
-    <div class="title">Loop Handle Bag</div>
-    <div class="price">₹7 – ₹12 / bag</div>
-    <div class="btn" onclick="order('Loop Bag')">Get Quote</div>
-  </div>
-
-</div>
+<div class="container" id="products"></div>
 
 <script>
+
+// 🔥 YOUR IMAGES
+const images = [
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKpMfb5VFu96Fu0sQaYmRapYAdbNeOa8vTiNUR5Kc6AA&s=10",
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTau1SSSZzBu6NhJF8Z9lYdXNUygL9iyAHvSMYzFjPBtQ&s=10",
+"https://satnamoverseas.in/wp-content/uploads/2023/04/Untitled-design-2023-05-10T161519.163.png",
+"https://image.made-in-china.com/43f34j00NVKvkQtHZdbE/Eco-Friendly-Custom-Logo-Non-Woven-Tote-Bags-for-Shopping-Promotion.jpg",
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfIOHGfVUrjBKF4R33ZxANAIhu0iHufNCB92_cy3lxRX7Zorq0TZbq9d0&s=10",
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzEvQU0m64coaQcl6qUYPDunFJ3EuvsQwkP39d1Z5U8g&s=10",
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH0MWMCRmwRrmfjuSTUAvCNzvSVz7WoAqnmrmLK9L9g&s=10"
+];
+
+// 🔥 AUTO PRODUCTS
+let html="";
+
+for(let i=1;i<=50;i++){
+  let img = images[i % images.length];
+
+  html += `
+  <div class="card">
+    <div class="img" style="background-image:url('${img}')"></div>
+    <div class="title">Carry Bag ${i}</div>
+    <div class="price">₹4 – ₹10 / bag</div>
+    <div class="btn" onclick="order('Carry Bag ${i}')">Get Quote</div>
+  </div>`;
+}
+
+document.getElementById("products").innerHTML = html;
+
+// WHATSAPP
 function order(name){
   window.open("https://wa.me/916307304325?text=Hi I want "+name);
 }
+
 </script>
 
 </body>

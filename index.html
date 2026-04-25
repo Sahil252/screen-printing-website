@@ -5,61 +5,55 @@
 <title>OM Carry Bag</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f1f3f6}
+body{margin:0;font-family:Arial;background:#f5f5f5}
 
 /* HEADER */
 header{
-  background:#2874f0;
+  background:#0f172a;
   color:white;
-  padding:10px;
+  padding:12px;
   display:flex;
   align-items:center;
   gap:10px;
 }
 .menu{font-size:22px;cursor:pointer}
-.logo{font-weight:bold}
+.logo{font-weight:bold;font-size:18px}
 
 /* SEARCH */
-.search{
-  flex:1;
-}
+.search{flex:1}
 .search input{
   width:100%;
   padding:8px;
+  border-radius:5px;
   border:none;
-  border-radius:4px;
 }
 
 /* SIDEMENU */
 .sidemenu{
   position:fixed;
   top:0;
-  left:-250px;
-  width:250px;
+  left:-260px;
+  width:260px;
   height:100%;
   background:white;
-  box-shadow:2px 0 10px rgba(0,0,0,0.2);
-  padding:20px;
   transition:0.3s;
+  padding:20px;
 }
 .sidemenu a{
   display:block;
   padding:10px 0;
-  text-decoration:none;
   color:black;
+  text-decoration:none;
 }
 
-/* CATEGORY */
-.categories{
-  display:flex;
-  overflow-x:auto;
-  background:white;
+/* HERO */
+.hero{
+  background:url("https://images.unsplash.com/photo-1593032465175-481ac7f401a0?w=800") center/cover;
+  color:white;
+  padding:40px 20px;
 }
-.cat{
-  padding:10px;
-  cursor:pointer;
-  min-width:80px;
-}
+.hero h1{margin:0}
+.hero p{margin:5px 0}
 
 /* PRODUCTS */
 .container{
@@ -72,7 +66,7 @@ header{
 .card{
   background:white;
   padding:10px;
-  border-radius:5px;
+  border-radius:8px;
 }
 
 .card img{
@@ -81,20 +75,10 @@ header{
   object-fit:cover;
 }
 
-.slider{
-  display:flex;
-  overflow-x:auto;
-  gap:5px;
-}
-.slider img{
-  width:70px;
-  height:70px;
-}
-
 .price{color:green;font-weight:bold}
 
 .btn{
-  background:#fb641b;
+  background:#16a34a;
   color:white;
   padding:8px;
   text-align:center;
@@ -106,13 +90,12 @@ header{
 
 <body>
 
-<!-- SIDE MENU -->
+<!-- MENU -->
 <div class="sidemenu" id="menu">
-  <h3>Menu</h3>
+  <h3>OM Carry Bag</h3>
   <a href="#">Home</a>
-  <a href="#">My Orders</a>
+  <a href="#">Bulk Orders</a>
   <a href="#">Contact</a>
-  <a href="#">About</a>
 </div>
 
 <!-- HEADER -->
@@ -120,15 +103,14 @@ header{
   <div class="menu" onclick="toggleMenu()">☰</div>
   <div class="logo">OM Carry Bag</div>
   <div class="search">
-    <input id="search" placeholder="Search bags...">
+    <input placeholder="Search bags...">
   </div>
 </header>
 
-<!-- CATEGORY -->
-<div class="categories">
-  <div class="cat" onclick="filter('all')">All</div>
-  <div class="cat" onclick="filter('nonwoven')">Non-Woven</div>
-  <div class="cat" onclick="filter('paper')">Paper</div>
+<!-- HERO -->
+<div class="hero">
+  <h1>Carry Bag Printing</h1>
+  <p>Bulk orders • Custom logo printing • Best price</p>
 </div>
 
 <!-- PRODUCTS -->
@@ -136,96 +118,54 @@ header{
 
 <script>
 
-// MENU
+// MENU FIX
 function toggleMenu(){
-  let m=document.getElementById("menu");
-  m.style.left = (m.style.left=="0px") ? "-250px" : "0px";
+ let m=document.getElementById("menu");
+ m.style.left = (m.style.left=="0px") ? "-260px" : "0px";
 }
 
-// PRODUCTS (REAL IMAGES)
-const products = [
+// ONLY BAG IMAGES
+const products=[
 {
- name:"Premium Non Woven Bag",
- cat:"nonwoven",
- price:"₹5",
- images:[
- "https://images.unsplash.com/photo-1593032465175-481ac7f401a0",
- "https://images.unsplash.com/photo-1585386959984-a4155224a1ad"
- ]
+ name:"Non Woven Bag",
+ price:"₹4 - ₹6",
+ img:"https://images.unsplash.com/photo-1593032465175-481ac7f401a0?w=400"
 },
 {
- name:"Designer Carry Bag",
- cat:"nonwoven",
- price:"₹6",
- images:[
- "https://images.unsplash.com/photo-1600180758890-6b94519a8ba5",
- "https://images.unsplash.com/photo-1607082349566-187342175e2f"
- ]
+ name:"Printed Carry Bag",
+ price:"₹5 - ₹7",
+ img:"https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400"
 },
 {
- name:"Printed Shopping Bag",
- cat:"nonwoven",
- price:"₹7",
- images:[
- "https://images.unsplash.com/photo-1580910051074-3eb694886505"
- ]
+ name:"Shopping Bag",
+ price:"₹6 - ₹8",
+ img:"https://images.unsplash.com/photo-1600180758890-6b94519a8ba5?w=400"
 },
 {
- name:"Paper Carry Bag",
- cat:"paper",
- price:"₹8",
- images:[
- "https://images.unsplash.com/photo-1593032465175-481ac7f401a0"
- ]
+ name:"Paper Bag",
+ price:"₹5 - ₹7",
+ img:"https://images.unsplash.com/photo-1607082349566-187342175e2f?w=400"
 }
 ];
 
-// duplicate for more items
-let full=[];
-for(let i=0;i<5;i++) full=full.concat(products);
-
-let current=full;
-
 // RENDER
-function render(list){
- let html="";
- list.forEach(p=>{
-   html+=`
-   <div class="card">
-     <img src="${p.images[0]}">
-     <div>${p.name}</div>
-     <div class="price">${p.price}</div>
-
-     <div class="slider">
-       ${p.images.map(i=>`<img src="${i}">`).join("")}
-     </div>
-
-     <div class="btn" onclick="order('${p.name}')">Order</div>
-   </div>`;
- });
- document.getElementById("products").innerHTML=html;
-}
-
-// FILTER
-function filter(cat){
- if(cat=="all") current=full;
- else current=full.filter(p=>p.cat==cat);
- render(current);
-}
-
-// SEARCH
-document.getElementById("search").addEventListener("input",function(){
- let val=this.value.toLowerCase();
- render(current.filter(p=>p.name.toLowerCase().includes(val)));
+let html="";
+products.forEach(p=>{
+ html+=`
+ <div class="card">
+  <img src="${p.img}">
+  <div>${p.name}</div>
+  <div class="price">${p.price}</div>
+  <div class="btn" onclick="order('${p.name}')">Order on WhatsApp</div>
+ </div>`;
 });
 
-// WHATSAPP
+document.getElementById("products").innerHTML=html;
+
+// ORDER
 function order(name){
  window.open(`https://wa.me/916307304325?text=Hi I want ${name}`);
 }
-
-// INIT
-render(full);
 
 </script>
 

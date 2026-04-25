@@ -7,19 +7,36 @@
 <style>
 body{margin:0;font-family:Arial;background:#f8fafc}
 
+/* HEADER */
 header{
   background:#0f172a;
   color:white;
   padding:15px;
   text-align:center;
-  font-size:18px;
 }
 
+header h1{
+  margin:0;
+  font-size:20px;
+}
+
+.tagline{
+  font-size:12px;
+  color:#cbd5f5;
+}
+
+/* HERO */
 .hero{
-  padding:15px;
+  padding:20px;
   text-align:center;
 }
 
+.dynamic{
+  color:#16a34a;
+  font-weight:bold;
+}
+
+/* GRID */
 .container{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -53,53 +70,109 @@ header{
   margin-top:6px;
   border-radius:5px;
 }
+
+/* FORM */
+.form{
+  background:white;
+  margin:10px;
+  padding:15px;
+  border-radius:10px;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+}
 </style>
 </head>
 
 <body>
 
-<header>OM Carry Bag</header>
+<header>
+  <h1>OM Carry Bag</h1>
+  <div class="tagline">Quality Printing • Bulk Supply • Trusted Manufacturer</div>
+</header>
 
 <div class="hero">
-  <h2>Carry Bag Printing</h2>
-  <p>Bulk Orders • Custom Logo Printing</p>
+  <h2>We Provide <span class="dynamic" id="text">Carry Bag Printing</span></h2>
+  <p>
+    We specialize in high-quality custom printed carry bags for businesses.
+    Our focus is on durability, attractive design, and affordable bulk pricing.
+  </p>
+</div>
+
+<!-- FORM -->
+<div class="form">
+  <h3>Get Quote</h3>
+
+  <input id="name" placeholder="Your Name">
+  <input id="phone" placeholder="Mobile Number">
+
+  <select id="bag">
+    <option value="">Select Bag Type</option>
+    <option>D-Cut Bag</option>
+    <option>Loop Bag</option>
+    <option>Paper Bag</option>
+  </select>
+
+  <input id="qty" placeholder="Quantity">
+
+  <textarea id="msg" placeholder="Extra details"></textarea>
+
+  <button onclick="sendQuote()" class="btn">Send on WhatsApp</button>
 </div>
 
 <div class="container" id="products"></div>
 
 <script>
 
-// 🔥 YOUR IMAGES
+// 🔥 DYNAMIC TEXT
+let texts = ["Carry Bag Printing","Bulk Orders","Custom Logo Printing"];
+let i=0;
+setInterval(()=>{
+  document.getElementById("text").innerText = texts[i];
+  i = (i+1)%texts.length;
+},2000);
+
+// 🔥 IMAGES
 const images = [
 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKpMfb5VFu96Fu0sQaYmRapYAdbNeOa8vTiNUR5Kc6AA&s=10",
 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTau1SSSZzBu6NhJF8Z9lYdXNUygL9iyAHvSMYzFjPBtQ&s=10",
 "https://satnamoverseas.in/wp-content/uploads/2023/04/Untitled-design-2023-05-10T161519.163.png",
 "https://image.made-in-china.com/43f34j00NVKvkQtHZdbE/Eco-Friendly-Custom-Logo-Non-Woven-Tote-Bags-for-Shopping-Promotion.jpg",
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfIOHGfVUrjBKF4R33ZxANAIhu0iHufNCB92_cy3lxRX7Zorq0TZbq9d0&s=10",
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzEvQU0m64coaQcl6qUYPDunFJ3EuvsQwkP39d1Z5U8g&s=10",
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCH0MWMCRmwRrmfjuSTUAvCNzvSVz7WoAqnmrmLK9L9g&s=10"
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfIOHGfVUrjBKF4R33ZxANAIhu0iHufNCB92_cy3lxRX7Zorq0TZbq9d0&s=10"
 ];
 
-// 🔥 AUTO PRODUCTS
+// PRODUCTS
 let html="";
-
-for(let i=1;i<=50;i++){
-  let img = images[i % images.length];
-
-  html += `
-  <div class="card">
-    <div class="img" style="background-image:url('${img}')"></div>
-    <div class="title">Carry Bag ${i}</div>
-    <div class="price">₹4 – ₹10 / bag</div>
-    <div class="btn" onclick="order('Carry Bag ${i}')">Get Quote</div>
-  </div>`;
+for(let j=1;j<=50;j++){
+ let img = images[j % images.length];
+ html += `
+ <div class="card">
+  <div class="img" style="background-image:url('${img}')"></div>
+  <div class="title">Carry Bag ${j}</div>
+  <div class="price">₹4 – ₹10</div>
+  <div class="btn" onclick="order('Carry Bag ${j}')">Get Quote</div>
+ </div>`;
 }
-
 document.getElementById("products").innerHTML = html;
 
-// WHATSAPP
+// ORDER
 function order(name){
-  window.open("https://wa.me/916307304325?text=Hi I want "+name);
+ window.open("https://wa.me/916307304325?text=Hi I want "+name);
+}
+
+// FORM
+function sendQuote(){
+ let text = `New Enquiry:%0A
+Name: ${name.value}%0A
+Phone: ${phone.value}%0A
+Bag: ${bag.value}%0A
+Qty: ${qty.value}%0A
+Details: ${msg.value}`;
+
+ window.open("https://wa.me/916307304325?text="+text);
 }
 
 </script>

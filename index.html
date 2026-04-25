@@ -3,259 +3,162 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Singh Screen Printing | Carry Bags Printing</title>
-  <meta name="description" content="Carry bags printing (screen printing) for shops, brands & businesses. Best quality, bulk orders, fast delivery." />
-  <link rel="stylesheet" href="styles.css" />
+  <title>OM Carry Bag | Carry Bag Printing</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+
+    header {
+      background: #020617;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: #94a3b8;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #22c55e;
+      color: black;
+    }
+
+    .outline {
+      border: 1px solid white;
+      background: transparent;
+      color: white;
+    }
+
+    .section {
+      padding: 30px 20px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #020617;
+    }
+
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      padding: 15px;
+      border-radius: 50%;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body>
-  <header class="header">
-    <div class="container header-row">
-      <div class="brand">
-        <div class="logo">SSP</div>
-        <div>
-          <h1>Singh Screen Printing</h1>
-          <p>Carry Bags Printing • Bulk Orders • Fast Delivery</p>
-        </div>
-      </div>
 
-      <nav class="nav">
-        <a href="#products">Products</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="btn">Contact</a>
-      </nav>
+<header>
+  <h2>OM Carry Bag</h2>
+  <nav>
+    <a href="#products">Products</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>High Quality Carry Bag Printing</h1>
+  <p>We provide screen printing on carry bags for shops, businesses and brands.</p>
+
+  <button class="btn primary" onclick="orderNow()">Get Quote</button>
+  <button class="btn outline" onclick="orderNow()">WhatsApp Order</button>
+</section>
+
+<section id="products" class="section">
+  <h2>Our Products</h2>
+
+  <div class="grid">
+    <div class="card">
+      <img src="https://via.placeholder.com/300" width="100%">
+      <h3>D-Cut Bags</h3>
+      <p>Strong and reusable bags for shops.</p>
     </div>
-  </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <h2>Carry Bags par <span class="accent">High Quality</span> Screen Printing</h2>
-          <p>
-            D-Cut, Loop Handle, U-Cut, Non-woven, Paper bags — aapka logo/brand print karke bulk me supply.
-            Shop owners, wholesalers, boutiques, restaurants ke liye perfect.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn primary" href="#contact">Get Quote</a>
-            <button class="btn outline" id="whatsAppQuickBtn">WhatsApp Order</button>
-          </div>
-
-          <ul class="bullets">
-            <li>✅ Bulk orders accepted</li>
-            <li>✅ Logo printing (1–3 colors)</li>
-            <li>✅ Delivery available</li>
-          </ul>
-        </div>
-
-        <div class="card hero-card">
-          <h3>Quick Quote</h3>
-          <p class="muted">2 minutes me details bhejo, hum rate share kar denge.</p>
-
-          <form id="quickQuoteForm">
-            <label>
-              Name
-              <input name="name" required placeholder="Your name" />
-            </label>
-            <label>
-              Phone
-              <input name="phone" required placeholder="10-digit number" />
-            </label>
-            <label>
-              Bag Type
-              <select name="bagType" required>
-                <option value="">Select</option>
-                <option>D-Cut (Non-woven)</option>
-                <option>Loop Handle</option>
-                <option>U-Cut</option>
-                <option>Paper Bag</option>
-                <option>Plastic Carry Bag</option>
-              </select>
-            </label>
-            <label>
-              Quantity
-              <input name="qty" required placeholder="e.g. 1000" />
-            </label>
-            <label>
-              Print Colors
-              <select name="colors" required>
-                <option value="">Select</option>
-                <option>1 Color</option>
-                <option>2 Colors</option>
-                <option>3 Colors</option>
-              </select>
-            </label>
-
-            <button class="btn primary full" type="submit">Send on WhatsApp</button>
-            <p class="tiny muted">Submit karte hi WhatsApp open hoga.</p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRODUCTS -->
-    <section id="products" class="section">
-      <div class="container">
-        <h2>Products</h2>
-        <p class="muted">Aap yahan apne real products add/edit kar sakte ho.</p>
-
-        <div class="grid">
-          <article class="card product">
-            <h3>D-Cut Non-woven Bags</h3>
-            <p>Best for retail shops, exhibitions. Strong & reusable.</p>
-            <ul class="muted">
-              <li>Sizes: 8x10, 10x12, 12x16 (custom)</li>
-              <li>GSM: 60–120</li>
-            </ul>
-            <button class="btn outline productOrderBtn" data-product="D-Cut Non-woven Bags">Order on WhatsApp</button>
-          </article>
-
-          <article class="card product">
-            <h3>Loop Handle Bags</h3>
-            <p>Premium look — boutiques, gifting, clothing brands.</p>
-            <ul class="muted">
-              <li>Custom colors</li>
-              <li>Strong handle</li>
-            </ul>
-            <button class="btn outline productOrderBtn" data-product="Loop Handle Bags">Order on WhatsApp</button>
-          </article>
-
-          <article class="card product">
-            <h3>Paper Bags</h3>
-            <p>Eco-friendly packaging — cafes, bakeries, gifting.</p>
-            <ul class="muted">
-              <li>Brown/White paper</li>
-              <li>Twisted handle optional</li>
-            </ul>
-            <button class="btn outline productOrderBtn" data-product="Paper Bags">Order on WhatsApp</button>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- PRICING -->
-    <section id="pricing" class="section alt">
-      <div class="container">
-        <h2>Pricing (Sample)</h2>
-        <p class="muted">Ye sample table hai — aap apne rates easily change kar sakte ho.</p>
-
-        <div class="table card">
-          <div class="row head">
-            <div>Bag Type</div>
-            <div>Qty</div>
-            <div>1 Color Print</div>
-            <div>2 Color Print</div>
-          </div>
-          <div class="row">
-            <div>D-Cut Non-woven</div>
-            <div>1000+</div>
-            <div>₹X / bag</div>
-            <div>₹Y / bag</div>
-          </div>
-          <div class="row">
-            <div>Loop Handle</div>
-            <div>500+</div>
-            <div>₹X / bag</div>
-            <div>₹Y / bag</div>
-          </div>
-          <div class="row">
-            <div>Paper Bag</div>
-            <div>500+</div>
-            <div>₹X / bag</div>
-            <div>₹Y / bag</div>
-          </div>
-        </div>
-
-        <p class="tiny muted">Note: Final rate depends on size, material, GSM, colors, plate/design, delivery.</p>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="container">
-        <h2>About Us</h2>
-        <div class="two-col">
-          <div class="card">
-            <h3>Trusted Screen Printing</h3>
-            <p>
-              Hum shops aur businesses ke liye carry bags par screen printing karte hain.
-              Quality ink, clean finishing aur bulk orders me timely delivery.
-            </p>
-            <ul class="muted">
-              <li>✅ Bulk + repeat orders</li>
-              <li>✅ Custom sizes & colors</li>
-              <li>✅ Logo & brand printing</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>What we need from you</h3>
-            <ol class="muted">
-              <li>Bag type + size</li>
-              <li>Quantity</li>
-              <li>Logo file (PNG/PDF/AI)</li>
-              <li>Print colors</li>
-            </ol>
-            <button class="btn primary" id="whatsAppSpecsBtn">Send Specs on WhatsApp</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section alt">
-      <div class="container">
-        <h2>Contact / Get Quote</h2>
-        <p class="muted">Form submit hone par WhatsApp open hoga (free). Future me chahe to email/CRM integration bhi kar sakte ho.</p>
-
-        <div class="two-col">
-          <form class="card" id="contactForm">
-            <label>
-              Name
-              <input name="name" required />
-            </label>
-            <label>
-              Phone
-              <input name="phone" required />
-            </label>
-            <label>
-              Requirement
-              <textarea name="msg" rows="5" required placeholder="e.g. D-cut 10x12, 2000 qty, 2 colors, delivery needed"></textarea>
-            </label>
-            <button class="btn primary full" type="submit">Send on WhatsApp</button>
-          </form>
-
-          <div class="card">
-            <h3>Direct</h3>
-            <p><b>Phone:</b> <span id="bizPhoneText">+91-XXXXXXXXXX</span></p>
-            <p><b>WhatsApp:</b> Same number</p>
-            <p><b>Address:</b> Your City, India</p>
-
-            <div class="divider"></div>
-
-            <h4>Business Hours</h4>
-            <p class="muted">Mon–Sat: 10:00 AM – 7:00 PM</p>
-
-            <button class="btn outline" id="callBtn">Call Now</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Floating WhatsApp -->
-  <button class="whatsapp-float" id="waFloat" aria-label="WhatsApp">
-    WhatsApp
-  </button>
-
-  <footer class="footer">
-    <div class="container footer-row">
-      <p>© <span id="year"></span> Singh Screen Printing. All rights reserved.</p>
-      <p class="muted">Made with HTML/CSS/JS</p>
+    <div class="card">
+      <img src="https://via.placeholder.com/300" width="100%">
+      <h3>Loop Handle Bags</h3>
+      <p>Premium look for clothing stores.</p>
     </div>
-  </footer>
 
-  <script src="script.js"></script>
+    <div class="card">
+      <img src="https://via.placeholder.com/300" width="100%">
+      <h3>Paper Bags</h3>
+      <p>Eco-friendly packaging option.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="section">
+  <h2>Pricing</h2>
+  <p>Contact us for bulk pricing based on quantity and printing colors.</p>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact Us</h2>
+  <p>Phone / WhatsApp: 6307304325</p>
+  <button class="btn primary" onclick="orderNow()">Order on WhatsApp</button>
+</section>
+
+<div class="whatsapp" onclick="orderNow()">
+  WA
+</div>
+
+<footer>
+  <p>© 2026 OM Carry Bag</p>
+</footer>
+
+<script>
+function orderNow() {
+  var msg = "Hi, I want carry bag printing quotation.";
+  window.open("https://wa.me/916307304325?text=" + encodeURIComponent(msg));
+}
+</script>
+
 </body>
 </html>

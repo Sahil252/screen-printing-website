@@ -5,168 +5,156 @@
 <title>OM Carry Bag</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f5f5f5}
+body{margin:0;font-family:Arial;background:#f8fafc}
 
 /* HEADER */
 header{
-  background:#0f172a;
-  color:white;
-  padding:12px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.menu{font-size:22px;cursor:pointer}
-.logo{font-weight:bold;font-size:18px}
-
-/* SEARCH */
-.search{flex:1}
-.search input{
-  width:100%;
-  padding:8px;
-  border-radius:5px;
-  border:none;
-}
-
-/* SIDEMENU */
-.sidemenu{
-  position:fixed;
-  top:0;
-  left:-260px;
-  width:260px;
-  height:100%;
   background:white;
-  transition:0.3s;
-  padding:20px;
+  padding:12px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
-.sidemenu a{
-  display:block;
-  padding:10px 0;
-  color:black;
-  text-decoration:none;
+.logo{
+  font-weight:bold;
+  font-size:18px;
+}
+.whatsapp-btn{
+  background:#25D366;
+  color:white;
+  padding:8px 12px;
+  border-radius:5px;
+  cursor:pointer;
 }
 
 /* HERO */
 .hero{
-  background:url("https://images.unsplash.com/photo-1593032465175-481ac7f401a0?w=800") center/cover;
+  padding:30px 20px;
+  background:#0f172a;
   color:white;
-  padding:40px 20px;
 }
-.hero h1{margin:0}
-.hero p{margin:5px 0}
+.hero h1{margin:0;font-size:24px}
+.hero p{margin:10px 0}
 
 /* PRODUCTS */
-.container{
+.section{padding:20px}
+.grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  padding:10px;
+  gap:12px;
 }
-
 .card{
   background:white;
   padding:10px;
   border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
-
 .card img{
   width:100%;
-  height:140px;
+  height:150px;
   object-fit:cover;
 }
-
 .price{color:green;font-weight:bold}
-
 .btn{
-  background:#16a34a;
+  background:#fb641b;
   color:white;
   padding:8px;
   text-align:center;
-  margin-top:5px;
+  margin-top:8px;
   border-radius:5px;
+}
+
+/* WHY US */
+.why{
+  background:white;
+  padding:20px;
+}
+.why div{margin-bottom:10px}
+
+/* FOOTER */
+footer{
+  background:#0f172a;
+  color:white;
+  padding:20px;
+  text-align:center;
 }
 </style>
 </head>
 
 <body>
 
-<!-- MENU -->
-<div class="sidemenu" id="menu">
-  <h3>OM Carry Bag</h3>
-  <a href="#">Home</a>
-  <a href="#">Bulk Orders</a>
-  <a href="#">Contact</a>
-</div>
-
-<!-- HEADER -->
 <header>
-  <div class="menu" onclick="toggleMenu()">☰</div>
   <div class="logo">OM Carry Bag</div>
-  <div class="search">
-    <input placeholder="Search bags...">
-  </div>
+  <div class="whatsapp-btn" onclick="order('Bulk Order')">WhatsApp</div>
 </header>
 
 <!-- HERO -->
 <div class="hero">
-  <h1>Carry Bag Printing</h1>
-  <p>Bulk orders • Custom logo printing • Best price</p>
+  <h1>Carry Bag Printing Manufacturer</h1>
+  <p>Bulk Orders • Custom Logo Printing • Best Price Guaranteed</p>
 </div>
 
 <!-- PRODUCTS -->
-<div class="container" id="products"></div>
+<div class="section">
+  <h2>Our Products</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0?w=500">
+      <h3>Non Woven Bags</h3>
+      <p>Sizes: 8x10, 10x12, 12x16</p>
+      <p class="price">₹4 – ₹7 / bag</p>
+      <div class="btn" onclick="order('Non Woven Bag')">Get Quote</div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=500">
+      <h3>Printed Carry Bags</h3>
+      <p>Custom Logo Printing</p>
+      <p class="price">₹5 – ₹8 / bag</p>
+      <div class="btn" onclick="order('Printed Bag')">Get Quote</div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=500">
+      <h3>Paper Bags</h3>
+      <p>Eco Friendly Bags</p>
+      <p class="price">₹6 – ₹10 / bag</p>
+      <div class="btn" onclick="order('Paper Bag')">Get Quote</div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba5?w=500">
+      <h3>Loop Handle Bags</h3>
+      <p>Premium Quality</p>
+      <p class="price">₹7 – ₹12 / bag</p>
+      <div class="btn" onclick="order('Loop Bag')">Get Quote</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="why">
+  <h2>Why Choose Us</h2>
+  <div>✔ High Quality Printing</div>
+  <div>✔ Bulk Order Specialist</div>
+  <div>✔ Fast Delivery</div>
+  <div>✔ Best Price in Market</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Contact: 6307304325</p>
+  <p>OM Carry Bag © 2026</p>
+</footer>
 
 <script>
-
-// MENU FIX
-function toggleMenu(){
- let m=document.getElementById("menu");
- m.style.left = (m.style.left=="0px") ? "-260px" : "0px";
-}
-
-// ONLY BAG IMAGES
-const products=[
-{
- name:"Non Woven Bag",
- price:"₹4 - ₹6",
- img:"https://images.unsplash.com/photo-1593032465175-481ac7f401a0?w=400"
-},
-{
- name:"Printed Carry Bag",
- price:"₹5 - ₹7",
- img:"https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400"
-},
-{
- name:"Shopping Bag",
- price:"₹6 - ₹8",
- img:"https://images.unsplash.com/photo-1600180758890-6b94519a8ba5?w=400"
-},
-{
- name:"Paper Bag",
- price:"₹5 - ₹7",
- img:"https://images.unsplash.com/photo-1607082349566-187342175e2f?w=400"
-}
-];
-
-// RENDER
-let html="";
-products.forEach(p=>{
- html+=`
- <div class="card">
-  <img src="${p.img}">
-  <div>${p.name}</div>
-  <div class="price">${p.price}</div>
-  <div class="btn" onclick="order('${p.name}')">Order on WhatsApp</div>
- </div>`;
-});
-
-document.getElementById("products").innerHTML=html;
-
-// ORDER
 function order(name){
- window.open(`https://wa.me/916307304325?text=Hi I want ${name}`);
+  window.open(`https://wa.me/916307304325?text=Hi I want ${name}`);
 }
-
 </script>
 
 </body>

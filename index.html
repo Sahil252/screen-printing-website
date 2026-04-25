@@ -1,7 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OM Carry Bag</title>
 
@@ -17,18 +16,37 @@ header{
   align-items:center;
   gap:10px;
 }
-header img{
-  width:30px;
-}
-header h2{margin:0;font-size:18px}
+.menu{font-size:22px;cursor:pointer}
+.logo{font-weight:bold}
 
 /* SEARCH */
-.search{padding:10px;background:white}
+.search{
+  flex:1;
+}
 .search input{
   width:100%;
-  padding:10px;
-  border-radius:5px;
-  border:1px solid #ccc;
+  padding:8px;
+  border:none;
+  border-radius:4px;
+}
+
+/* SIDEMENU */
+.sidemenu{
+  position:fixed;
+  top:0;
+  left:-250px;
+  width:250px;
+  height:100%;
+  background:white;
+  box-shadow:2px 0 10px rgba(0,0,0,0.2);
+  padding:20px;
+  transition:0.3s;
+}
+.sidemenu a{
+  display:block;
+  padding:10px 0;
+  text-decoration:none;
+  color:black;
 }
 
 /* CATEGORY */
@@ -39,31 +57,42 @@ header h2{margin:0;font-size:18px}
 }
 .cat{
   padding:10px;
-  min-width:80px;
-  text-align:center;
   cursor:pointer;
-  font-size:13px;
+  min-width:80px;
 }
 
-/* PRODUCT GRID */
+/* PRODUCTS */
 .container{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:10px;
   padding:10px;
 }
+
 .card{
   background:white;
   padding:10px;
   border-radius:5px;
 }
+
 .card img{
   width:100%;
   height:140px;
   object-fit:cover;
 }
-.title{font-size:14px}
+
+.slider{
+  display:flex;
+  overflow-x:auto;
+  gap:5px;
+}
+.slider img{
+  width:70px;
+  height:70px;
+}
+
 .price{color:green;font-weight:bold}
+
 .btn{
   background:#fb641b;
   color:white;
@@ -71,92 +100,132 @@ header h2{margin:0;font-size:18px}
   text-align:center;
   margin-top:5px;
   border-radius:5px;
-  font-size:12px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <img src="https://cdn-icons-png.flaticon.com/512/3082/3082031.png">
-  <h2>OM Carry Bag</h2>
-</header>
-
-<div class="search">
-  <input id="search" placeholder="Search bags...">
+<!-- SIDE MENU -->
+<div class="sidemenu" id="menu">
+  <h3>Menu</h3>
+  <a href="#">Home</a>
+  <a href="#">My Orders</a>
+  <a href="#">Contact</a>
+  <a href="#">About</a>
 </div>
 
+<!-- HEADER -->
+<header>
+  <div class="menu" onclick="toggleMenu()">☰</div>
+  <div class="logo">OM Carry Bag</div>
+  <div class="search">
+    <input id="search" placeholder="Search bags...">
+  </div>
+</header>
+
+<!-- CATEGORY -->
 <div class="categories">
   <div class="cat" onclick="filter('all')">All</div>
-  <div class="cat" onclick="filter('dcut')">D-Cut</div>
-  <div class="cat" onclick="filter('loop')">Loop</div>
+  <div class="cat" onclick="filter('nonwoven')">Non-Woven</div>
   <div class="cat" onclick="filter('paper')">Paper</div>
 </div>
 
+<!-- PRODUCTS -->
 <div class="container" id="products"></div>
 
 <script>
 
-// ✅ REAL CATEGORY IMAGES
+// MENU
+function toggleMenu(){
+  let m=document.getElementById("menu");
+  m.style.left = (m.style.left=="0px") ? "-250px" : "0px";
+}
+
+// PRODUCTS (REAL IMAGES)
 const products = [
-  {name:"D-Cut Bag 10x12",cat:"dcut",price:"₹4",
-   img:"https://images.unsplash.com/photo-1593032465175-481ac7f401a0?w=400"},
-  {name:"D-Cut Bag 12x16",cat:"dcut",price:"₹5",
-   img:"https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400"},
-  {name:"Loop Bag Premium",cat:"loop",price:"₹6",
-   img:"https://images.unsplash.com/photo-1600180758890-6b94519a8ba5?w=400"},
-  {name:"Loop Bag Large",cat:"loop",price:"₹7",
-   img:"https://images.unsplash.com/photo-1607082349566-187342175e2f?w=400"},
-  {name:"Paper Bag Small",cat:"paper",price:"₹5",
-   img:"https://images.unsplash.com/photo-1607082349566-187342175e2f?w=400"},
-  {name:"Paper Bag Large",cat:"paper",price:"₹6",
-   img:"https://images.unsplash.com/photo-1580910051074-3eb694886505?w=400"},
+{
+ name:"Premium Non Woven Bag",
+ cat:"nonwoven",
+ price:"₹5",
+ images:[
+ "https://images.unsplash.com/photo-1593032465175-481ac7f401a0",
+ "https://images.unsplash.com/photo-1585386959984-a4155224a1ad"
+ ]
+},
+{
+ name:"Designer Carry Bag",
+ cat:"nonwoven",
+ price:"₹6",
+ images:[
+ "https://images.unsplash.com/photo-1600180758890-6b94519a8ba5",
+ "https://images.unsplash.com/photo-1607082349566-187342175e2f"
+ ]
+},
+{
+ name:"Printed Shopping Bag",
+ cat:"nonwoven",
+ price:"₹7",
+ images:[
+ "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+ ]
+},
+{
+ name:"Paper Carry Bag",
+ cat:"paper",
+ price:"₹8",
+ images:[
+ "https://images.unsplash.com/photo-1593032465175-481ac7f401a0"
+ ]
+}
 ];
 
-// duplicate to make more products
-let fullList = [];
-for(let i=0;i<5;i++){ fullList = fullList.concat(products); }
+// duplicate for more items
+let full=[];
+for(let i=0;i<5;i++) full=full.concat(products);
 
-let current = fullList;
+let current=full;
 
-// 🔥 render
+// RENDER
 function render(list){
-  let html="";
-  list.forEach(p=>{
-    html+=`
-    <div class="card">
-      <img src="${p.img}">
-      <div class="title">${p.name}</div>
-      <div>Category: ${p.cat}</div>
-      <div class="price">${p.price}</div>
-      <div class="btn" onclick="order('${p.name}')">Order</div>
-    </div>`;
-  });
-  document.getElementById("products").innerHTML=html;
+ let html="";
+ list.forEach(p=>{
+   html+=`
+   <div class="card">
+     <img src="${p.images[0]}">
+     <div>${p.name}</div>
+     <div class="price">${p.price}</div>
+
+     <div class="slider">
+       ${p.images.map(i=>`<img src="${i}">`).join("")}
+     </div>
+
+     <div class="btn" onclick="order('${p.name}')">Order</div>
+   </div>`;
+ });
+ document.getElementById("products").innerHTML=html;
 }
 
-// 🔥 filter
+// FILTER
 function filter(cat){
-  if(cat=="all") current=fullList;
-  else current=fullList.filter(p=>p.cat==cat);
-  render(current);
+ if(cat=="all") current=full;
+ else current=full.filter(p=>p.cat==cat);
+ render(current);
 }
 
-// 🔥 search
-document.getElementById("search").addEventListener("input", function(){
-  let val=this.value.toLowerCase();
-  let filtered=current.filter(p=>p.name.toLowerCase().includes(val));
-  render(filtered);
+// SEARCH
+document.getElementById("search").addEventListener("input",function(){
+ let val=this.value.toLowerCase();
+ render(current.filter(p=>p.name.toLowerCase().includes(val)));
 });
 
-// WhatsApp
+// WHATSAPP
 function order(name){
-  window.open(`https://wa.me/916307304325?text=Hi I want ${name}`);
+ window.open(`https://wa.me/916307304325?text=Hi I want ${name}`);
 }
 
-// initial load
-render(fullList);
+// INIT
+render(full);
 
 </script>
 

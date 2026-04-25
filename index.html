@@ -106,7 +106,7 @@ input,select,textarea{
 <div class="form">
   <h3>Get Quote</h3>
 
-  <input id="name" placeholder="Your Name">
+  <input id="custName" placeholder="Your Name">
   <input id="phone" placeholder="Mobile Number">
 
   <select id="bag">
@@ -166,7 +166,7 @@ function order(name){
 // FORM
 function sendQuote(){
  let text = `New Enquiry:%0A
-Name: ${name.value}%0A
+Name: ${custName.value}%0A
 Phone: ${phone.value}%0A
 Bag: ${bag.value}%0A
 Qty: ${qty.value}%0A

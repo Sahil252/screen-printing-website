@@ -13,6 +13,8 @@ body{
   color:white;
 }
 
+h1{margin-top:40px;}
+
 .heart{
   font-size:50px;
   animation: beat 1s infinite;
@@ -22,10 +24,6 @@ body{
   0%{transform:scale(1);}
   50%{transform:scale(1.2);}
   100%{transform:scale(1);}
-}
-
-h1{
-  margin-top:50px;
 }
 
 .message{
@@ -41,7 +39,18 @@ button{
   border-radius:10px;
   cursor:pointer;
   font-size:16px;
-  margin:10px;
+  margin:8px;
+}
+
+/* GIF section */
+#surprise{
+  display:none;
+  margin-top:20px;
+}
+
+#surprise img{
+  width:200px;
+  border-radius:10px;
 }
 </style>
 </head>
@@ -55,31 +64,44 @@ button{
 <div class="message">
   <p>
     Dear Saumya,<br><br>
-    You are the most beautiful part of my life.  
-    Every moment with you feels special.  
-    I may not say it every day, but you mean everything to me. ❤️  
-    <br><br>
-    I am lucky to have you in my life.  
-    Thank you for being with me always.  
+    You are my happiness, my peace, and my everything ❤️  
+    I feel lucky every day to have you in my life.  
   </p>
 </div>
 
-<button onclick="playMusic()">Play Music 🎵</button>
-<button onclick="showLove()">Click Here ❤️</button>
+<button onclick="playMusic()">▶️ Play Music</button>
+<button onclick="stopMusic()">⏸ Stop Music</button>
+<br>
+<button onclick="showLove()">Click for Surprise 💖</button>
+
+<!-- GIF + TEXT -->
+<div id="surprise">
+  <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+  <p style="font-size:18px;">
+    I love you so much Saumya ❤️  
+    Thank you for being mine forever 🤗💖
+  </p>
+</div>
 
 <!-- MUSIC -->
 <audio id="bgmusic" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8f3c1b7b7.mp3?filename=romantic-love-11786.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function showLove(){
-  alert("I Love You Saumya ❤️ Forever ♾️");
-}
 
 function playMusic(){
   document.getElementById("bgmusic").play();
 }
+
+function stopMusic(){
+  document.getElementById("bgmusic").pause();
+}
+
+function showLove(){
+  document.getElementById("surprise").style.display="block";
+}
+
 </script>
 
 </body>

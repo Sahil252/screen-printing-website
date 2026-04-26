@@ -2,104 +2,147 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>For Saumya ❤️</title>
+<title>Free WhatsApp Message Generator</title>
 
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  text-align:center;
-  background:linear-gradient(to right, #ff9a9e, #fad0c4);
+body{margin:0;font-family:Arial;background:#f8fafc}
+
+/* HEADER */
+header{
+  background:#16a34a;
   color:white;
+  padding:15px;
+  text-align:center;
 }
 
-h1{margin-top:40px;}
-
-.heart{
-  font-size:50px;
-  animation: beat 1s infinite;
-}
-
-@keyframes beat{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.2);}
-  100%{transform:scale(1);}
-}
-
-.message{
+/* HERO */
+.hero{
   padding:20px;
-  font-size:18px;
+  text-align:center;
+}
+
+.container{
+  padding:15px;
+}
+
+/* FORM */
+.box{
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+input,select,textarea{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
 }
 
 button{
-  padding:12px 20px;
+  width:100%;
+  padding:12px;
+  background:#16a34a;
+  color:white;
   border:none;
-  background:white;
-  color:#ff4d6d;
-  border-radius:10px;
-  cursor:pointer;
-  font-size:16px;
-  margin:8px;
+  border-radius:5px;
+  margin-top:5px;
 }
 
-/* GIF section */
-#surprise{
-  display:none;
+/* RESULT */
+.result{
+  background:#e6ffe6;
+  padding:10px;
+  margin-top:10px;
+}
+
+/* CTA */
+.cta{
+  background:#0f172a;
+  color:white;
+  padding:20px;
+  text-align:center;
   margin-top:20px;
-}
-
-#surprise img{
-  width:200px;
-  border-radius:10px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>❤️ For My Love Saumya ❤️</h1>
+<header>
+  <h2>Free WhatsApp Message Generator</h2>
+</header>
 
-<div class="heart">💖</div>
-
-<div class="message">
-  <p>
-    Dear Saumya,<br><br>
-    You are my happiness, my peace, and my everything ❤️  
-    I feel lucky every day to have you in my life.  
-  </p>
+<div class="hero">
+  <h3>Create Business Messages in Seconds 🚀</h3>
+  <p>Generate WhatsApp messages for customers, orders, and marketing</p>
 </div>
 
-<button onclick="playMusic()">▶️ Play Music</button>
-<button onclick="stopMusic()">⏸ Stop Music</button>
-<br>
-<button onclick="showLove()">Click for Surprise 💖</button>
+<div class="container">
 
-<!-- GIF + TEXT -->
-<div id="surprise">
-  <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
-  <p style="font-size:18px;">
-    I love you so much Saumya ❤️  
-    Thank you for being mine forever 🤗💖
-  </p>
+  <div class="box">
+    <h3>Generate Message</h3>
+
+    <input id="name" placeholder="Customer Name">
+    <input id="product" placeholder="Product / Service">
+    <input id="price" placeholder="Price">
+
+    <select id="type">
+      <option>Order Confirmation</option>
+      <option>Offer Message</option>
+      <option>Follow Up</option>
+    </select>
+
+    <button onclick="generate()">Generate Message</button>
+
+    <div id="output" class="result"></div>
+
+    <button onclick="send()">Send on WhatsApp</button>
+  </div>
+
+  <!-- AD PLACE -->
+  <div style="background:#eee;padding:20px;text-align:center;margin:10px">
+    Advertisement
+  </div>
+
 </div>
 
-<!-- MUSIC -->
-<audio id="bgmusic" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8f3c1b7b7.mp3?filename=romantic-love-11786.mp3" type="audio/mpeg">
-</audio>
+<!-- CTA -->
+<div class="cta">
+  <h3>Need a Website for Your Business?</h3>
+  <p>Get your professional website in just ₹2999</p>
+  <button onclick="contact()">Contact Me</button>
+</div>
 
 <script>
 
-function playMusic(){
-  document.getElementById("bgmusic").play();
+let finalMsg="";
+
+function generate(){
+  let name=document.getElementById("name").value;
+  let product=document.getElementById("product").value;
+  let price=document.getElementById("price").value;
+  let type=document.getElementById("type").value;
+
+  if(type=="Order Confirmation"){
+    finalMsg=`Hello ${name}, your order for ${product} has been confirmed. Total amount is ₹${price}. Thank you!`;
+  }
+  else if(type=="Offer Message"){
+    finalMsg=`Hi ${name}, we have a special offer on ${product} for just ₹${price}. Grab now!`;
+  }
+  else{
+    finalMsg=`Hello ${name}, just following up regarding ${product}. Let us know if you're interested.`;
+  }
+
+  document.getElementById("output").innerText=finalMsg;
 }
 
-function stopMusic(){
-  document.getElementById("bgmusic").pause();
+function send(){
+  window.open("https://wa.me/?text="+encodeURIComponent(finalMsg));
 }
 
-function showLove(){
-  document.getElementById("surprise").style.display="block";
+function contact(){
+  window.open("https://wa.me/916307304325?text=Hi I want website");
 }
 
 </script>

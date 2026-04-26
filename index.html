@@ -2,179 +2,84 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OM Carry Bag</title>
+<title>For Saumya ❤️</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f8fafc}
-
-/* HEADER */
-header{
-  background:#0f172a;
-  color:white;
-  padding:15px;
-  text-align:center;
-}
-
-header h1{
+body{
   margin:0;
-  font-size:20px;
-}
-
-.tagline{
-  font-size:12px;
-  color:#cbd5f5;
-}
-
-/* HERO */
-.hero{
-  padding:20px;
+  font-family:Arial;
   text-align:center;
-}
-
-.dynamic{
-  color:#16a34a;
-  font-weight:bold;
-}
-
-/* GRID */
-.container{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  padding:12px;
-}
-
-.card{
-  background:white;
-  padding:10px;
-  border-radius:8px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.1);
-}
-
-.img{
-  width:100%;
-  height:140px;
-  background-size:cover;
-  background-position:center;
-  border-radius:6px;
-}
-
-.title{font-size:14px;margin-top:5px}
-.price{color:green;font-weight:bold}
-
-.btn{
-  background:#16a34a;
+  background:linear-gradient(to right, #ff9a9e, #fad0c4);
   color:white;
-  padding:8px;
-  text-align:center;
-  margin-top:6px;
-  border-radius:5px;
 }
 
-/* FORM */
-.form{
+.heart{
+  font-size:50px;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+  100%{transform:scale(1);}
+}
+
+h1{
+  margin-top:50px;
+}
+
+.message{
+  padding:20px;
+  font-size:18px;
+}
+
+button{
+  padding:12px 20px;
+  border:none;
   background:white;
-  margin:10px;
-  padding:15px;
+  color:#ff4d6d;
   border-radius:10px;
-}
-
-input,select,textarea{
-  width:100%;
-  padding:10px;
-  margin:5px 0;
+  cursor:pointer;
+  font-size:16px;
+  margin:10px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>OM Carry Bag</h1>
-  <div class="tagline">Quality Printing • Bulk Supply • Trusted Manufacturer</div>
-</header>
+<h1>❤️ For My Love Saumya ❤️</h1>
 
-<div class="hero">
-  <h2>We Provide <span class="dynamic" id="text">Carry Bag Printing</span></h2>
+<div class="heart">💖</div>
+
+<div class="message">
   <p>
-    We specialize in high-quality custom printed carry bags for businesses.
-    Our focus is on durability, attractive design, and affordable bulk pricing.
+    Dear Saumya,<br><br>
+    You are the most beautiful part of my life.  
+    Every moment with you feels special.  
+    I may not say it every day, but you mean everything to me. ❤️  
+    <br><br>
+    I am lucky to have you in my life.  
+    Thank you for being with me always.  
   </p>
 </div>
 
-<!-- FORM -->
-<div class="form">
-  <h3>Get Quote</h3>
+<button onclick="playMusic()">Play Music 🎵</button>
+<button onclick="showLove()">Click Here ❤️</button>
 
-  <input id="custName" placeholder="Your Name">
-  <input id="phone" placeholder="Mobile Number">
-
-  <select id="bag">
-    <option value="">Select Bag Type</option>
-    <option>D-Cut Bag</option>
-    <option>Loop Bag</option>
-    <option>Paper Bag</option>
-  </select>
-
-  <input id="qty" placeholder="Quantity">
-
-  <textarea id="msg" placeholder="Extra details"></textarea>
-
-  <button onclick="sendQuote()" class="btn">Send on WhatsApp</button>
-</div>
-
-<div class="container" id="products"></div>
+<!-- MUSIC -->
+<audio id="bgmusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-
-// 🔥 DYNAMIC TEXT
-let texts = ["Carry Bag Printing","Bulk Orders","Logo Printing"];
-let i=0;
-setInterval(()=>{
-  document.getElementById("text").innerText = texts[i];
-  i = (i+1)%texts.length;
-},2000);
-
-// 🔥 IMAGES
-const images = [
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKpMfb5VFu96Fu0sQaYmRapYAdbNeOa8vTiNUR5Kc6AA&s=10",
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTau1SSSZzBu6NhJF8Z9lYdXNUygL9iyAHvSMYzFjPBtQ&s=10",
-"https://satnamoverseas.in/wp-content/uploads/2023/04/Untitled-design-2023-05-10T161519.163.png",
-"https://image.made-in-china.com/43f34j00NVKvkQtHZdbE/Eco-Friendly-Custom-Logo-Non-Woven-Tote-Bags-for-Shopping-Promotion.jpg",
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfIOHGfVUrjBKF4R33ZxANAIhu0iHufNCB92_cy3lxRX7Zorq0TZbq9d0&s=10"
-];
-
-// PRODUCTS
-let html="";
-for(let j=1;j<=50;j++){
- let img = images[j % images.length];
- html += `
- <div class="card">
-  <div class="img" style="background-image:url('${img}')"></div>
-  <div class="title">Carry Bag ${j}</div>
-  <div class="price">₹4 – ₹10</div>
-  <div class="btn" onclick="order('Carry Bag ${j}')">Get Quote</div>
- </div>`;
-}
-document.getElementById("products").innerHTML = html;
-
-// ORDER
-function order(name){
- window.open("https://wa.me/916307304325?text=Hi I want "+name);
+function showLove(){
+  alert("I Love You Saumya ❤️ Forever ♾️");
 }
 
-// FORM
-function sendQuote(){
- let text = `New Enquiry:%0A
-Name: ${custName.value}%0A
-Phone: ${phone.value}%0A
-Bag: ${bag.value}%0A
-Qty: ${qty.value}%0A
-Details: ${msg.value}`;
-
- window.open("https://wa.me/916307304325?text="+text);
+function playMusic(){
+  document.getElementById("bgmusic").play();
 }
-
 </script>
 
 </body>
